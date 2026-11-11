@@ -24,7 +24,10 @@ seu computador.
 - Respeita os limites da especificação (nome com 25 caracteres, cidade com 15, conta do
   recebedor com 99) e remove acentos, como o manual recomenda.
 
-<img src="docs/ler-mobile.png" alt="Leitura de um Pix Copia e Cola no celular" width="300">
+<p>
+  <img src="docs/ler-mobile.png" alt="Leitura de um Pix Copia e Cola no celular" width="260">
+  <img src="docs/gerar-chromium-escuro.png" alt="Modo escuro" width="520">
+</p>
 
 ## Por dentro
 

@@ -12,7 +12,9 @@ export default function App() {
       <header className="header">
         <span className="logo" aria-hidden="true">◆</span>
         <div>
-          <h1>Pix Fácil</h1>
+          <h1>
+            Pix <span>Fácil</span>
+          </h1>
           <p>Gere e confira QR Codes Pix seguindo a especificação BR Code do Banco Central.</p>
         </div>
       </header>
