@@ -24,7 +24,7 @@ export function GenerateTab() {
   const [txid, setTxid] = useState("");
   const [description, setDescription] = useState("");
   const [singleUse, setSingleUse] = useState(false);
-  const [qr, setQr] = useState<string>("");
+  const [qrImage, setQrImage] = useState({ payload: "", url: "" });
 
   const detected = keyType === "auto" ? detectKeyType(key) : keyType;
 
@@ -49,19 +49,20 @@ export function GenerateTab() {
     }
   }, [detected, key, name, city, amount, txid, description, singleUse]);
 
+  // The QR image is rendered asynchronously; it is kept together with the payload it
+  // belongs to, so a stale image is never shown for a newer payload.
   useEffect(() => {
+    if (!result.payload) return;
     let cancelled = false;
-    if (!result.payload) {
-      setQr("");
-      return;
-    }
     QRCode.toDataURL(result.payload, { errorCorrectionLevel: "M", margin: 2, width: 640 }).then((url) => {
-      if (!cancelled) setQr(url);
+      if (!cancelled) setQrImage({ payload: result.payload, url });
     });
     return () => {
       cancelled = true;
     };
   }, [result.payload]);
+
+  const qr = qrImage.payload === result.payload ? qrImage.url : "";
 
   return (
     <div className="grid">
